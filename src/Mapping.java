@@ -34,8 +34,9 @@ public class Mapping {
 
     public static String getClassNameByUrl(String url) {
 
-        return "servlet.DispatcherServlet";
-//        return mapping.get(url);
+        // 配且只配 dispatcher 偷个懒 直接写死
+//        return "servlet.DispatcherServlet";
+        return mapping.get(url);
     }
 
 }

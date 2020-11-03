@@ -14,6 +14,7 @@ public interface Filter {
      * @param request
      * @return 【true 通过 继续责任链】/【false 不通过 结束责任链】
      */
-    boolean doFilter(Request request);
+
+    boolean doFilter(Request request, Response response, FilterChain chain);
 }
 

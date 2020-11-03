@@ -1,6 +1,6 @@
 //import filter.FilterChain;
 
-import filter_upgrade.FilterChain;
+import filter.FilterChain;
 import io.Request;
 import io.Response;
 import servlet.Servlet;
@@ -25,16 +25,14 @@ public class Server {
         ServerSocket serverSocket = new ServerSocket(port);
 
         while (true) {
-            System.out.println("=============");
+            System.out.println("==== ==== ====");
             Socket socket = serverSocket.accept();
-
             // 获取输入输出流
             InputStream inputStream = socket.getInputStream();
             OutputStream outputStream = socket.getOutputStream();
 
             Request request = new Request(inputStream);
             Response response = new Response(outputStream);
-
 
             // 执行servlet操作
             String url = request.getRequestUrl();
@@ -52,8 +50,8 @@ public class Server {
                 Servlet servlet = clazz.newInstance();// MyServlet
 
 //                 执行过滤器操作
-//            filterExec(request);
-                filterUpgradeExec(servlet, request, response);
+//                filterExec(request);
+                filterExec(servlet, request, response);// 最终版
 
 //                通过过滤器条件来调用service
 //                servlet.service(request, response);
@@ -67,15 +65,8 @@ public class Server {
     /**
      * 做过滤器内容
      */
-    public static void filterExec(Request request) {
-//        final FilterChain filterChain = new FilterChain();
-//        filterChain.doFilter(request);
-    }
-
-
-    public static void filterUpgradeExec(Servlet servlet, Request request, Response response) {
+    public static void filterExec(Servlet servlet, Request request, Response response) {
         final FilterChain filterChain = new FilterChain(servlet);
-//        filterChain.doFilter(request, response, filterChain);
         filterChain.doFilter(request, response);
     }
 

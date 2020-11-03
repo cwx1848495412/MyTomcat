@@ -22,4 +22,5 @@ public class MyServlet extends HttpServlet {
     public void doPost(Request request, Response response) throws IOException {
         response.write("POST MyTomcat");
     }
+
 }
