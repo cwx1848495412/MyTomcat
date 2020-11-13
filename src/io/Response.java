@@ -27,6 +27,9 @@ public class Response {
                 .append("</html>");
         this.outputStream.write(builder.toString().getBytes());
         this.outputStream.flush();
+    }
+
+    public void close() throws IOException {
         this.outputStream.close();
     }
 }

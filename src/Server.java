@@ -59,6 +59,8 @@ public class Server {
                 // mapping 不存在
                 response.write("Route doesn't exist:" + url);
             }
+
+            response.close();
         }
     }
 
